@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{% block title %}Анкета {{user.username}}{% endblock %}</h1>
+
+<table align="center" width="90%">
+	<tr><th>Имя</td>													<td>{{user.username}}</td></tr>
+	<tr><th>Раса</td>													<td>{{user.race}}</td></tr>
+	<tr><th>Возраст</td>											<td>{{user.age}}</td></tr>
+	<tr><th>Класс</td>												<td>{{user.class}}</td></tr>
+	<tr><th>Отношение к богам</td>						<td>{{user.relate_to_gods}}</td></tr>
+	<tr><th>Отношение к магии</td>						<td>{{user.relate_to_magic}}</td></tr>
+	<tr><th>Отношение к технологиям</td>			<td>{{user.relate_to_tech}}</td></tr>
+	<tr><th>Отношение к расам</td>						<td>{{user.relate_to_races}}</td></tr>
+	<tr><th>Любимый метод решения проблем</td><td>{{user.methods}}</td></tr>
+	<tr><th>Наиболее важный предмет</td>			<td>{{user.object}}</td></tr>
+	<tr><th>Уровень пошлости</td>							<td>{{user.lewdness}}</td></tr>
+	<tr><th>Уровень кровавости</td>						<td>{{user.guro}}</td></tr>
+</table><br><br>
+
+Статы:
+<table align="center" width="90%">
+	<tr>
+		<th valign="top">Статы</td>
+		<td valign="top" align="center">Тип</td>
+		<td valign="top" align="center">Очки</td>
+		<td valign="top" align="center">Модификатор</td>
+		<td valign="top" align="center">Сумма</td>
+		<td valign="top" align="center">Описание</td>
+	</tr>
+	{% for stat in user.stats %}
+		<tr>
+			<th valign="top">{{stat.name}}</td>
+			<td valign="top" align="center">
+			{% if   stat.type == "А" -%}	Активный
+			{% elif stat.type == "П" -%}	Пассивный
+			{% endif %}
+			</td>
+			<td valign="top" align="center">{{stat.value}}</td>
+			<td valign="top" align="center">{{stat.mod}}</td>
+			{% set sum = 0 -%}
+			{% set sum = sum + stat.value | int -%}
+			{% set sum = sum + stat.mod | int -%}
+			<td valign="top" align="center">{{ sum }}</td>
+			<td valign="top" align="center">
+			{% if   sum == 0 -%}	никак
+			{% elif sum == 1 -%}	слабо
+			{% elif sum == 2 -%}	обычно
+			{% elif sum == 3 -%}	лучше среднего
+			{% elif sum == 4 -%}	хорошо
+			{% elif sum == 5 -%}	легко и умело
+			{% elif sum == 6 -%}	удивительно
+			{% elif sum == 7 -%}	блестяще
+			{% elif sum == 8 -%}	прославленно
+			{% elif sum == 9 -%}	легендарно
+			{% endif %}
+			</td>
+		</tr>
+	{% endfor %}
+	<tr>
+		<td>Свободные очки</td>
+		<td></td>
+		<td valign="top" align="center">{{ user.free_points }}</td>
+	</tr>
+</table><br><br>
+
+Инвентарь:
+<table align="center" width="90%">
+	<tr>
+		<th valign="top" width="17%">Имя</td>
+		<td valign="top" align="center" width="12%"><b>Тип</b></td>
+		<th valign="top">Описание</td>
+	</tr>
+	{% for charitem in user.inventory %}
+		<tr>
+			<th valign="top" >{{charitem.name}}</td>
+			<td valign="top" align="center">{{charitem.type}}</td>
+			<td valign="top" align="justify">{{charitem.description}}</td>
+		</tr>
+	{% endfor %}
+</table><br><br>
+
+Навыки:
+<table align="center" width="90%">
+	<tr>
+		<th valign="top" width="17%">Имя</td>
+		<th valign="top">Описание</td>
+	</tr>
+	{% for perk in user.perks %}
+		<tr>
+			<th valign="top">{{perk.name}}</td>
+			<td align="justify">{{perk.description}}</td>
+		</tr>
+	{% endfor %}
+</table><br><br>
+
+Близкие вам персонажи:
+<table align="center" width="90%">
+	<tr>
+		<th valign="top" width="17%">Имя</td>
+		<th valign="top">Описание</td>
+	</tr>
+	{% for people in user.relatives %}
+		<tr>
+			<th valign="top">{{people.name}}</td>
+			<td valign="top" align="justify">{{people.description}}</td>
+		</tr>
+	{% endfor %}
+</table><br><br>
+
+{% endblock %}

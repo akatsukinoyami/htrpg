@@ -1,4 +1,4 @@
-import json
+import json, traceback
 
 from flask import render_template
 
@@ -21,5 +21,5 @@ def user_profile(char):
 															stats=stats
 														)
 	except Exception as e:
-		print(e)
+		print(traceback.format_exc())
 		return render_template('404.html')

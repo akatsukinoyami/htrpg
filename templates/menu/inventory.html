@@ -1,0 +1,18 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Название</th>
+      <th scope="col">Тип</th>
+      <th scope="col">Описание</th>
+    </tr>
+  </thead>
+  <tbody>
+		{% for charitem in user.inventory %}
+    <tr class="table-active">
+      <th scope="row">{{charitem.name}}</th>
+      <td>{{charitem.type}}</td>
+			<td>{{charitem.description}}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>

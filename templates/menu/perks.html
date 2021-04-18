@@ -1,0 +1,16 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Название</th>
+      <th scope="col">Описание</th>
+    </tr>
+  </thead>
+  <tbody>
+		{% for perk in user.perks %}
+    <tr class="table-active">
+      <th scope="row">{{perk.name}}</th>
+			<td>{{perk.description}}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>

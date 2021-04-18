@@ -1,13 +1,19 @@
-<div class="row p-2"><div class="col-4">Имя</div>														<div class="col-8">{{user.username}}				</div></div>
-<div class="row p-2"><div class="col-4">Раса</div>													<div class="col-8">{{user.race}}						</div></div>
-<div class="row p-2"><div class="col-4">Возраст</div>												<div class="col-8">{{user.age}}							</div></div>
-<div class="row p-2"><div class="col-4">Класс</div>													<div class="col-8">{{user.class}}						</div></div>
-<div class="row p-2"><div class="col-12">Отношение к</div></div>
-<div class="row p-2"><div class="col-3 offset-1">Богам</div>								<div class="col-8">{{user.relate_to_gods}}	</div></div>
-<div class="row p-2"><div class="col-3 offset-1">Магии</div>								<div class="col-8">{{user.relate_to_magic}}	</div></div>
-<div class="row p-2"><div class="col-3 offset-1">Технологиям</div> 					<div class="col-8">{{user.relate_to_tech}}	</div></div>
-<div class="row p-2"><div class="col-3 offset-1">Расам</div>								<div class="col-8">{{user.relate_to_races}}	</div></div>
-<div class="row p-2"><div class="col-4">Любимый метод решения проблем</div>	<div class="col-8">{{user.methods}}					</div></div>
-<div class="row p-2"><div class="col-4">Наиболее важный предмет</div>				<div class="col-8">{{user.object}}					</div></div>
-<div class="row p-2"><div class="col-4">Пошлость</div>											<div class="col-8">{{user.lewdness}}				</div></div>
-<div class="row p-2"><div class="col-4">Кровавость</div>										<div class="col-8">{{user.guro}}						</div></div>
+<table class="table table-hover">
+  <tbody>
+		{% set tclass = 'class="table-active"'%}
+		{% set row = 'scope="row"'%}
+    <tr {{tclass}}><th {{row}}>Имя													</th><td>{{user.username}}				</td></tr>
+    <tr {{tclass}}><th {{row}}>Раса													</th><td>{{user.race}}						</td></tr>
+    <tr {{tclass}}><th {{row}}>Возраст											</th><td>{{user.age}}							</td></tr>
+    <tr {{tclass}}><th {{row}}>Класс												</th><td>{{user.class}}						</td></tr>
+    <tr {{tclass}}><th {{row}}>Отношение к									</th><td>													</td></tr>
+    <tr {{tclass}}><th {{row}}>Богам												</th><td>{{user.relate_to_gods}}	</td></tr>
+    <tr {{tclass}}><th {{row}}>Магии												</th><td>{{user.relate_to_magic}}	</td></tr>
+    <tr {{tclass}}><th {{row}}>Техно												</th><td>{{user.relate_to_tech}}	</td></tr>
+    <tr {{tclass}}><th {{row}}>Расам												</th><td>{{user.relate_to_races}}	</td></tr>
+    <tr {{tclass}}><th {{row}}>Любимый метод решения проблем</th><td>{{user.methods}}					</td></tr>
+    <tr {{tclass}}><th {{row}}>Наиболее важный предмет			</th><td>{{user.object}}					</td></tr>
+    <tr {{tclass}}><th {{row}}>Пошлость											</th><td>{{user.lewdness}}				</td></tr>
+    <tr {{tclass}}><th {{row}}>Кровавость										</th><td>{{user.guro}}						</td></tr>
+	</tbody>
+</table>

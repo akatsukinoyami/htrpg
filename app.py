@@ -5,4 +5,4 @@ app = Flask(__name__)
 import routes
 
 if __name__ == "__main__":
-    app.run(debug=True,host='0.0.0.0', port='12000', debug=False)
+    app.run(host='192.168.1.101', port='12000', debug=False)

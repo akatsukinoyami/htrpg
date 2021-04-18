@@ -31,13 +31,14 @@
         </div>
     </nav>
     <div class="container">
+      <br>
         {% block content %} {% endblock %}
     </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    {% for lib in ('jquery', 'popper', 'bootstrap')%}
-      <script src="{{ url_for('static', filename='js/'+lib+'.min.js') }}"></script>
-    {% endfor%}
-    </body>
+    <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popper.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+  </body>
 </html>

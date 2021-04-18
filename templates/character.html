@@ -1,128 +1,22 @@
 {% extends 'base.html' %}
 
-
-<br><br>
 {% block content %}
-<h1>{% block title %}Анкета {{user.username}}{% endblock %}</h1>
-
 <div class="container">
 	<div class="row">
-		<div class="col-12 col-lg-5 order-1 order-lg-2 p-2 border bg-light">
+		<div class="col-12">
+			<h1>{% block title %}Анкета {{user.username}}{% endblock %}</h1>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-12 col-lg-5 order-1 order-lg-2">
 			<img src="{{ url_for('static', filename='avatars/'+link+'.jpg') }}" class="img-fluid" alt="...">
 		</div>
-		<div class="col-12 col-lg-7 order-2 order-lg-1">
-			<div class="row p-2 border bg-light"><div class="col-4">Имя</div>														<div class="col-8">{{user.username}}				</div></div>
-			<div class="row p-2 border bg-light"><div class="col-4">Раса</div>													<div class="col-8">{{user.race}}						</div></div>
-			<div class="row p-2 border bg-light"><div class="col-4">Возраст</div>												<div class="col-8">{{user.age}}							</div></div>
-			<div class="row p-2 border bg-light"><div class="col-4">Класс</div>													<div class="col-8">{{user.class}}						</div></div>
-			<div class="row p-2 border bg-light"><div class="col-12">Отношение к</div></div>
-			<div class="row p-2 border bg-light"><div class="col-3 offset-1">Богам</div>								<div class="col-8">{{user.relate_to_gods}}	</div></div>
-			<div class="row p-2 border bg-light"><div class="col-3 offset-1">Магии</div>								<div class="col-8">{{user.relate_to_magic}}	</div></div>
-			<div class="row p-2 border bg-light"><div class="col-3 offset-1">Технологиям</div> 					<div class="col-8">{{user.relate_to_tech}}	</div></div>
-			<div class="row p-2 border bg-light"><div class="col-3 offset-1">Расам</div>								<div class="col-8">{{user.relate_to_races}}	</div></div>
-			<div class="row p-2 border bg-light"><div class="col-4">Любимый метод решения проблем</div>	<div class="col-8">{{user.methods}}					</div></div>
-			<div class="row p-2 border bg-light"><div class="col-4">Наиболее важный предмет</div>				<div class="col-8">{{user.object}}					</div></div>
-			<div class="row p-2 border bg-light"><div class="col-4">Пошлость</div>											<div class="col-8">{{user.lewdness}}				</div></div>
-			<div class="row p-2 border bg-light"><div class="col-4">Кровавость</div>										<div class="col-8">{{user.guro}}						</div></div>
-		</div>
+		<div class="col-12 col-lg-7 order-2 order-lg-1">{% include 'sub/info.html' %}</div>
 	</div>
-</div><br>
-
-<ul class="nav nav-tabs">
-  <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#biography">Биография</a></li>
-  <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#stats">Статы</a></li>
-  <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#inventory">Инвентарь</a></li>
-  <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#perks">Навыки</a></li>
-  <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#relatives">Близкие персонажи</a></li>
-</ul>
-<div id="myTabContent" class="tab-content">
-	<div class="tab-pane fade active show" id="biography">
-		<div class="container">
-			<div class="row p-2 border bg-light">
-				<div align="justify" class="col">{{ user.biography }}</div>
-			</div>
-		</div>
-	</div>
-  <div class="tab-pane fade" id="stats">
-		<div class="container">
-			<div class="row p-2 border bg-light">
-				<div class="col-3 col-lg-3">Статы</div>
-				<div align="center" class="col-3 col-lg-3">Тип</div>
-				<div align="center" class="col-1 col-lg-1">Очки</div>
-				<div align="center" class="col-1 col-lg-1">Мод</div>
-				<div align="center" class="col-1 col-lg-1">Сумма</div>
-				<div align="center" class="col-3 col-lg-3">Описание</div>
-			</div>
-			{% for stat in user.stats %}
-				<div class="row p-2 border bg-light">
-					<div class="col-3 col-lg-3">{{stat.name}}</div>
-					<div align="center" class="col-3 col-lg-3">
-					{% if   stat.type == "А" -%}	Активный
-					{% elif stat.type == "П" -%}	Пассивный
-					{% endif %}
-					</div>
-					<div align="center" class="col-1 col-lg-1">{{stat.value}}</div>
-					<div align="center" class="col-1 col-lg-1">{{stat.mod}}</div>
-					{% set sum = stat.mod |int + stat.value | int -%}
-					<div align="center" class="col-1 col-lg-1">{{ sum }}</div>
-					<div align="center" class="col-3 col-lg-3">{{ stats[sum] }}</div>
-				</div>
-			{% endfor %}
-			<div class="row p-2 border bg-light">
-				<div class="col-6 col-lg-6 ">Свободные очки</div>
-				<div align="center" class="col-1 col-lg-1">{{ user.free_points }}</div>
-			</div>
-		</div>
-	</div>
-  <div class="tab-pane fade" id="inventory">
-		<div class="container">
-			<div class="row p-2 border bg-light">
-				<div class="col-4 col-lg-2">Название</div>
-				<div class="col-4 col-lg-2">Тип</div>
-				<div class="col-4 col-lg-8">Описание</div>
-			</div>
-			{% for charitem in user.inventory %}
-			<div class="row p-2 border bg-light">
-				<div class="col-6 col-lg-2">{{charitem.name}}</div>
-				<div class="col-6 col-lg-2">{{charitem.type}}</div>
-				<div class="d-block d-md-none w-100"></div>
-				<div align="justify" class="col-12 col-lg-8">{{charitem.description}}</div>
-			</div>
-			{% endfor %}	
-		</div>
-	</div>
-	<div class="tab-pane fade" id="perks">
-		<div class="container">
-			<div class="row">
-				<div align="center" class="col-12"><h3>Навыки</h3></div>
-			</div>
-			<div class="row p-2 border bg-light">
-				<div class="col-6 col-lg-2">Название</div>
-				<div class="col-6 col-lg-10">Описание</div>
-			</div>
-			{% for perk in user.perks %}
-			<div class="row p-2 border bg-light">
-				<div class="col-12 col-lg-2">{{perk.name}}</div>
-				<div class="d-block d-md-none w-100"></div>
-				<div align="justify" class="col-12 col-lg-10">{{perk.description}}</div>
-			</div>
-			{% endfor %}
-		</div>
-	</div>
-	<div class="tab-pane fade" id="relatives">
-		<div class="container">
-			<div class="row p-2 border bg-light">
-				<div class="col-6 col-lg-2">Имя</div>
-				<div class="col-6 col-lg-10">Описание</div>
-			</div>
-			{% for people in user.relatives %}
-			<div class="row p-2 border bg-light">
-				<div class="col-12 col-lg-2">{{people.name}}</div>
-				<div class="d-block d-md-none w-100"></div>
-				<div align="justify" class="col-12 col-lg-10">{{people.description}}</div>
-			</div>
-			{% endfor %}
-		</div>
+	<br>
+	<div class="row">
+		<div class="col-12">{% include 'sub/allinfo.html' %}</div>
 	</div>
 </div>
 

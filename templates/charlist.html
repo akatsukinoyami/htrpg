@@ -14,6 +14,7 @@
 					<h5 class="card-title">{{ char.username }}</h5>
 					<p class="card-text">{{ char.race }}, {{ char.age }}, {{ char.class }}</p>
 					<a href="{{ link }}" class="btn btn-primary">Анкета</a>
+					<a href="{{ url_for('get_user_profile_json', char=link) }}" class="btn btn-primary btn-secondary">JSON</a>
 				</div>
 			</div>
 		</div>

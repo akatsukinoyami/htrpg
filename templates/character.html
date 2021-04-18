@@ -1,112 +1,121 @@
 {% extends 'base.html' %}
 
-{% block content %}
 
+<br><br>
+{% block content %}
 <h1>{% block title %}Анкета {{user.username}}{% endblock %}</h1>
 
-<table align="center" width="90%">
-	<tr><th>Имя</td>													<td>{{user.username}}</td></tr>
-	<tr><th>Раса</td>													<td>{{user.race}}</td></tr>
-	<tr><th>Возраст</td>											<td>{{user.age}}</td></tr>
-	<tr><th>Класс</td>												<td>{{user.class}}</td></tr>
-	<tr><th>Отношение к богам</td>						<td>{{user.relate_to_gods}}</td></tr>
-	<tr><th>Отношение к магии</td>						<td>{{user.relate_to_magic}}</td></tr>
-	<tr><th>Отношение к технологиям</td>			<td>{{user.relate_to_tech}}</td></tr>
-	<tr><th>Отношение к расам</td>						<td>{{user.relate_to_races}}</td></tr>
-	<tr><th>Любимый метод решения проблем</td><td>{{user.methods}}</td></tr>
-	<tr><th>Наиболее важный предмет</td>			<td>{{user.object}}</td></tr>
-	<tr><th>Уровень пошлости</td>							<td>{{user.lewdness}}</td></tr>
-	<tr><th>Уровень кровавости</td>						<td>{{user.guro}}</td></tr>
-</table><br><br>
+<div class="container">
+	<div class="row">
+		<div class="col-12 col-lg-5 order-1 order-lg-2 p-2 border bg-light">
+			<img src="{{ url_for('static', filename='avatars/'+link+'.jpg') }}" class="img-fluid" alt="...">
+		</div>
+		<div class="col-12 col-lg-7 order-2 order-lg-1">
+			<div class="row p-2 border bg-light"><div class="col-4">Имя</div>														<div class="col-8">{{user.username}}				</div></div>
+			<div class="row p-2 border bg-light"><div class="col-4">Раса</div>													<div class="col-8">{{user.race}}						</div></div>
+			<div class="row p-2 border bg-light"><div class="col-4">Возраст</div>												<div class="col-8">{{user.age}}							</div></div>
+			<div class="row p-2 border bg-light"><div class="col-4">Класс</div>													<div class="col-8">{{user.class}}						</div></div>
+			<div class="row p-2 border bg-light"><div class="col-12">Отношение к</div></div>
+			<div class="row p-2 border bg-light"><div class="col-3 offset-1">Богам</div>								<div class="col-8">{{user.relate_to_gods}}	</div></div>
+			<div class="row p-2 border bg-light"><div class="col-3 offset-1">Магии</div>								<div class="col-8">{{user.relate_to_magic}}	</div></div>
+			<div class="row p-2 border bg-light"><div class="col-3 offset-1">Технологиям</div> 					<div class="col-8">{{user.relate_to_tech}}	</div></div>
+			<div class="row p-2 border bg-light"><div class="col-3 offset-1">Расам</div>								<div class="col-8">{{user.relate_to_races}}	</div></div>
+			<div class="row p-2 border bg-light"><div class="col-4">Любимый метод решения проблем</div>	<div class="col-8">{{user.methods}}					</div></div>
+			<div class="row p-2 border bg-light"><div class="col-4">Наиболее важный предмет</div>				<div class="col-8">{{user.object}}					</div></div>
+			<div class="row p-2 border bg-light"><div class="col-4">Пошлость</div>											<div class="col-8">{{user.lewdness}}				</div></div>
+			<div class="row p-2 border bg-light"><div class="col-4">Кровавость</div>										<div class="col-8">{{user.guro}}						</div></div>
+		</div>
+	</div>
+</div><br>
 
-Статы:
-<table align="center" width="90%">
-	<tr>
-		<th valign="top">Статы</td>
-		<td valign="top" align="center">Тип</td>
-		<td valign="top" align="center">Очки</td>
-		<td valign="top" align="center">Модификатор</td>
-		<td valign="top" align="center">Сумма</td>
-		<td valign="top" align="center">Описание</td>
-	</tr>
-	{% for stat in user.stats %}
-		<tr>
-			<th valign="top">{{stat.name}}</td>
-			<td valign="top" align="center">
-			{% if   stat.type == "А" -%}	Активный
-			{% elif stat.type == "П" -%}	Пассивный
-			{% endif %}
-			</td>
-			<td valign="top" align="center">{{stat.value}}</td>
-			<td valign="top" align="center">{{stat.mod}}</td>
-			{% set sum = 0 -%}
-			{% set sum = sum + stat.value | int -%}
-			{% set sum = sum + stat.mod | int -%}
-			<td valign="top" align="center">{{ sum }}</td>
-			<td valign="top" align="center">
-			{% if   sum == 0 -%}	никак
-			{% elif sum == 1 -%}	слабо
-			{% elif sum == 2 -%}	обычно
-			{% elif sum == 3 -%}	лучше среднего
-			{% elif sum == 4 -%}	хорошо
-			{% elif sum == 5 -%}	легко и умело
-			{% elif sum == 6 -%}	удивительно
-			{% elif sum == 7 -%}	блестяще
-			{% elif sum == 8 -%}	прославленно
-			{% elif sum == 9 -%}	легендарно
-			{% endif %}
-			</td>
-		</tr>
-	{% endfor %}
-	<tr>
-		<td>Свободные очки</td>
-		<td></td>
-		<td valign="top" align="center">{{ user.free_points }}</td>
-	</tr>
-</table><br><br>
-
-Инвентарь:
-<table align="center" width="90%">
-	<tr>
-		<th valign="top" width="17%">Имя</td>
-		<td valign="top" align="center" width="12%"><b>Тип</b></td>
-		<th valign="top">Описание</td>
-	</tr>
-	{% for charitem in user.inventory %}
-		<tr>
-			<th valign="top" >{{charitem.name}}</td>
-			<td valign="top" align="center">{{charitem.type}}</td>
-			<td valign="top" align="justify">{{charitem.description}}</td>
-		</tr>
-	{% endfor %}
-</table><br><br>
-
-Навыки:
-<table align="center" width="90%">
-	<tr>
-		<th valign="top" width="17%">Имя</td>
-		<th valign="top">Описание</td>
-	</tr>
-	{% for perk in user.perks %}
-		<tr>
-			<th valign="top">{{perk.name}}</td>
-			<td align="justify">{{perk.description}}</td>
-		</tr>
-	{% endfor %}
-</table><br><br>
-
-Близкие вам персонажи:
-<table align="center" width="90%">
-	<tr>
-		<th valign="top" width="17%">Имя</td>
-		<th valign="top">Описание</td>
-	</tr>
-	{% for people in user.relatives %}
-		<tr>
-			<th valign="top">{{people.name}}</td>
-			<td valign="top" align="justify">{{people.description}}</td>
-		</tr>
-	{% endfor %}
-</table><br><br>
+<ul class="nav nav-tabs">
+  <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#stats">Статы</a></li>
+  <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#inventory">Инвентарь</a></li>
+  <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#perks">Навыки</a></li>
+  <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#relatives">Близкие персонажи</a></li>
+</ul>
+<div id="myTabContent" class="tab-content">
+  <div class="tab-pane fade active show" id="stats">
+		<div class="container">
+			<div class="row p-2 border bg-light">
+				<div class="col-3 col-lg-3">Статы</div>
+				<div align="center" class="col-3 col-lg-3">Тип</div>
+				<div align="center" class="col-1 col-lg-1">Очки</div>
+				<div align="center" class="col-1 col-lg-1">Мод</div>
+				<div align="center" class="col-1 col-lg-1">Сумма</div>
+				<div align="center" class="col-3 col-lg-3">Описание</div>
+			</div>
+			{% for stat in user.stats %}
+				<div class="row p-2 border bg-light">
+					<div class="col-3 col-lg-3">{{stat.name}}</div>
+					<div align="center" class="col-3 col-lg-3">
+					{% if   stat.type == "А" -%}	Активный
+					{% elif stat.type == "П" -%}	Пассивный
+					{% endif %}
+					</div>
+					<div align="center" class="col-1 col-lg-1">{{stat.value}}</div>
+					<div align="center" class="col-1 col-lg-1">{{stat.mod}}</div>
+					{% set sum = stat.mod |int + stat.value | int -%}
+					<div align="center" class="col-1 col-lg-1">{{ sum }}</div>
+					<div align="center" class="col-3 col-lg-3">{{ stats[sum] }}</div>
+				</div>
+			{% endfor %}
+			<div class="row p-2 border bg-light">
+				<div class="col-6 col-lg-6 ">Свободные очки</div>
+				<div align="center" class="col-1 col-lg-1">{{ user.free_points }}</div>
+			</div>
+		</div>
+	</div>
+  <div class="tab-pane fade" id="inventory">
+		<div class="container">
+			<div class="row p-2 border bg-light">
+				<div class="col-4 col-lg-2">Название</div>
+				<div class="col-4 col-lg-2">Тип</div>
+				<div class="col-4 col-lg-8">Описание</div>
+			</div>
+			{% for charitem in user.inventory %}
+			<div class="row p-2 border bg-light">
+				<div class="col-6 col-lg-2">{{charitem.name}}</div>
+				<div class="col-6 col-lg-2">{{charitem.type}}</div>
+				<div class="d-block d-md-none w-100"></div>
+				<div align="justify" class="col-12 col-lg-8">{{charitem.description}}</div>
+			</div>
+			{% endfor %}	
+		</div>
+	</div>
+	<div class="tab-pane fade" id="perks">
+		<div class="container">
+			<div class="row">
+				<div align="center" class="col-12"><h3>Навыки</h3></div>
+			</div>
+			<div class="row p-2 border bg-light">
+				<div class="col-6 col-lg-2">Название</div>
+				<div class="col-6 col-lg-10">Описание</div>
+			</div>
+			{% for perk in user.perks %}
+			<div class="row p-2 border bg-light">
+				<div class="col-12 col-lg-2">{{perk.name}}</div>
+				<div class="d-block d-md-none w-100"></div>
+				<div align="justify" class="col-12 col-lg-10">{{perk.description}}</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+	<div class="tab-pane fade" id="relatives">
+		<div class="container">
+			<div class="row p-2 border bg-light">
+				<div class="col-6 col-lg-2">Имя</div>
+				<div class="col-6 col-lg-10">Описание</div>
+			</div>
+			{% for people in user.relatives %}
+			<div class="row p-2 border bg-light">
+				<div class="col-12 col-lg-2">{{people.name}}</div>
+				<div class="d-block d-md-none w-100"></div>
+				<div align="justify" class="col-12 col-lg-10">{{people.description}}</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
 
 {% endblock %}

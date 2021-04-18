@@ -1,8 +1,0 @@
-{% extends 'base.html' %}
-
-{% block content %}
-<h1>{% block title %} Анкеты персонажей {% endblock %}</h1>
-{% for char in chars%}
-<a href={{ char }}>{{ char | capitalize }}</a>
-{% endfor %}
-{% endblock %}

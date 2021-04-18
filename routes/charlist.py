@@ -1,10 +1,17 @@
 import os
+import json
 
 from flask import render_template
 
-from __main__ import app
+from __main__    import app
 
 @app.route('/chars/')
 def char_list():
-    listchars = [f.replace('.json', '') for f in os.listdir('chars') if 'template' not in f]
-    return render_template('chars.html', chars=listchars)
+    charlist = {}
+    for char in os.listdir('static/chars'):
+        if 'template' not in char:
+            char = char.replace('.json', '')
+            with open(f'static/chars/{char}.json', 'r') as file:
+                charlist[char] = json.load(file)
+    
+    return render_template('charlist.html', chars=charlist)

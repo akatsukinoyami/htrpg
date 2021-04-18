@@ -1,0 +1,85 @@
+{
+	"username"					: "",
+	"race"							: "",
+	"age" 							: "",
+	"class" 						: "",
+	"relate_to_gods" 		: "",
+	"relate_to_magic" 	: "",
+	"relate_to_tech" 		: "",
+	"relate_to_races" 	: "",
+	"methods" 					: "",
+	"object" 						: "",
+	"lewdness" 					: "",
+	"guro" 							: "",
+
+	"stats"							: [
+		{
+			"name"					: "Сила",
+			"type"					: "А",
+			"value"					: "",
+			"mod"						: ""
+		},
+		{
+			"name"					: "Выносливость",
+			"type"					: "П",
+			"value"					: "",
+			"mod"						: ""
+		},
+		{
+			"name"					: "Точность",
+			"type"					: "А",
+			"value"					: "",
+			"mod"						: ""
+		},
+		{
+			"name"					: "Проворность",
+			"type"					: "П",
+			"value"					: "",
+			"mod"						: ""
+		},
+		{
+			"name"					: "Смекалка",
+			"type"					: "А",
+			"value"					: "",
+			"mod"						: ""
+		},
+		{
+			"name"					: "Знания",
+			"type"					: "П",
+			"value"					: "",
+			"mod"						: ""
+		},
+		{
+			"name"					: "Воля",
+			"type"					: "А",
+			"value"					: "",
+			"mod"						: ""
+		},
+		{
+			"name"					: "Шарм",
+			"type"					: "П",
+			"value"					: "",
+			"mod"						: ""
+		}
+	],
+	"free_points"				: "",
+	"inventory"					: [
+		{
+			"name"					: "",
+			"type"					: "",
+			"description"		: ""
+		}
+	],
+	"perks"							: [
+		{
+			"name"					: "",
+			"description"		: ""
+		}
+	],
+	"relatives"					: [
+		{
+			"name"					: "",
+			"description"		: ""
+		}
+	]
+}

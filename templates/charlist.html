@@ -25,7 +25,7 @@
 									{{char.age}}	 <br>
 									{{char.class}} <br>
 								</p>
-								<a href="{{ link }}" class="btn btn-primary">Анкета</a>
+								<a href="{{ url_for('user_profile', char=link) }}" class="btn btn-primary">Анкета</a>
 								<a href="{{ url_for('get_user_profile_json', char=link) }}" class="btn btn-primary btn-secondary">JSON</a>
 							</div>
 						</div>

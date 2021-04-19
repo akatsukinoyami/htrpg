@@ -1,3 +1,7 @@
-<div class="jumbotron">
-  <p class="lead">{{ user.biography }}</p>
-</div>
+{% extends 'menu/base.html' %}
+
+{% block content %}
+<tr class="table-active">
+	<td>{{ user.biography }}</td>
+</tr>
+{% endblock %}

@@ -1,4 +1,3 @@
-FROM tiangolo/uwsgi-nginx-flask:python3.6-alpine3.7
+FROM tiangolo/meinheld-gunicorn-flask:latest
 WORKDIR /app/
 COPY . .
-CMD ["python3", "app.py"]

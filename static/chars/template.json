@@ -64,6 +64,12 @@
 		}
 	],
 	"free_points"				: "",
+	"achievements"			: [
+		{
+			"name"					: "",
+			"description"		: ""
+		}
+	],
 	"inventory"					: [
 		{
 			"name"					: "",

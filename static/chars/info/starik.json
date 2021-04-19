@@ -1,0 +1,98 @@
+{
+	"username"					: "Старик",
+	"status"						: "Мертв",
+	"race"							: "Огненный дженази",
+	"age" 							: "50+",
+	"class" 						: "Гладиатор-Берсерк",
+	"relate_to_gods" 		: "Адепт бога войны",
+	"relate_to_magic" 	: "",
+	"relate_to_tech" 		: "",
+	"relate_to_races" 	: "Нейтральное ко всем",
+	"methods" 					: "Уговоры, угрозы и насилие",
+	"object" 						: "",
+	"lewdness" 					: "",
+	"guro" 							: "",
+	"biography"					: "",
+
+	"stats"							: [
+		{
+			"name"					: "Сила",
+			"type"					: "А",
+			"value"					: "4",
+			"mod"						: "3"
+		},
+		{
+			"name"					: "Выносливость",
+			"type"					: "П",
+			"value"					: "2",
+			"mod"						: "2"
+		},
+		{
+			"name"					: "Точность",
+			"type"					: "А",
+			"value"					: "2",
+			"mod"						: "2"
+		},
+		{
+			"name"					: "Проворность",
+			"type"					: "П",
+			"value"					: "4",
+			"mod"						: "1"
+		},
+		{
+			"name"					: "Смекалка",
+			"type"					: "А",
+			"value"					: "4",
+			"mod"						: "-1"
+		},
+		{
+			"name"					: "Знания",
+			"type"					: "П",
+			"value"					: "3",
+			"mod"						: "-2"
+		},
+		{
+			"name"					: "Воля",
+			"type"					: "А",
+			"value"					: "2",
+			"mod"						: "1"
+		},
+		{
+			"name"					: "Шарм",
+			"type"					: "П",
+			"value"					: "3",
+			"mod"						: "-2"
+		}
+	],
+	"free_points"				: "0",
+	"achievements"			: [
+		{
+			"name"					: "",
+			"description"		: ""
+		}
+	],
+	"inventory"					: [
+		{
+			"name"					: "Проклятые клинки берсерка",
+			"type"					: "Оружие",
+			"description"		: "Два проклятых клинка берсерка"
+		},
+		{
+			"name"					: "Ошейник госпожи Кастер",
+			"type"					: "",
+			"description"		: "Свидетельствует её власть над Стариком."
+		}
+	],
+	"perks"							: [
+		{
+			"name"					: "",
+			"description"		: ""
+		}
+	],
+	"relatives"					: [
+		{
+			"name"					: "",
+			"description"		: ""
+		}
+	]
+}

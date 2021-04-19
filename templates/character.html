@@ -3,19 +3,20 @@
 {% block content %}
 <div class="container">
 
-	<div class="row">
-		<div class="col-12">
-			<h1>{% block title %}Анкета {{user.username}}{% endblock %}</h1>
-		</div>
-	</div>
+	<div class="row"><div class="col-12"><table class="table table-hover"><tr><td><h1>
+		{% block title %}Анкета {{user.username}}{% endblock %}
+	</h1></td></tr></table></div></div>
 
 	<div class="row">
+
 		<div class="col-12 col-lg-5 order-1 order-lg-2">
-			<img src="{{ url_for('static', filename='chars/avatars/'+link+'.jpg') }}" class="img-fluid" alt="...">
+			<img src="{{ user.avatar }}" class="img-fluid" alt="...">
 		</div>
+
 		<div class="col-12 col-lg-7 order-2 order-lg-1">
 			{% include 'menu/info.html' %}
 		</div>
+
 	</div>
 
 	<br>

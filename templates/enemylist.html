@@ -1,0 +1,49 @@
+{% extends 'sub/base.html' %}
+
+{% block content %}
+<h1>{% block title %}Враги{% endblock %}</h1>
+<div class="row">
+  <div class="col-3">
+		<nav>
+			<div class="nav flex-column" id="nav-tab" role="tablist" aria-orientation="vertical">
+				<button {{class}} data-bs-target="#nav-hound" id="nav-hound-tab" aria-controls="nav-hound" class="btn btn-outline-primary btn-lg nav-link" data-bs-toggle="tab" role="tab">
+					Гончая
+				</button>
+				<button {{class}} data-bs-target="#nav-glowworm" id="nav-glowworm-tab" aria-controls="nav-glowworm" class="btn btn-outline-primary btn-lg nav-link" data-bs-toggle="tab" role="tab">
+					Светлячек
+				</button>
+				<button {{class}} data-bs-target="#nav-grip" id="nav-grip-tab" aria-controls="nav-grip" class="btn btn-outline-primary btn-lg nav-link" data-bs-toggle="tab" role="tab">
+					Хват
+				</button>
+				<button {{class}} data-bs-target="#nav-bonethrower" id="nav-bonethrower-tab" aria-controls="nav-bonethrower" class="btn btn-outline-primary btn-lg nav-link" data-bs-toggle="tab" role="tab">
+					Костемет
+				</button>
+				<button {{class}} data-bs-target="#nav-pilgrim" id="nav-pilgrim-tab" aria-controls="nav-pilgrim" class="btn btn-outline-primary btn-lg nav-link" data-bs-toggle="tab" role="tab">
+					Странник
+				</button>
+			
+			</div>
+		</nav>
+  </div>
+<br>
+	<div class="col-9">
+		<div class="tab-content" id="nav-tabContent">
+			<div class="tab-pane fade show active" role="tabpanel" id="nav-hound" aria-labelledby="nav-hound-tab">
+				{% with enemy=chars['hound'] %}{% include "sub/one_enemy.html" %}{% endwith %}
+			</div>
+			<div class="tab-pane fade" role="tabpanel" id="nav-glowworm" 			aria-labelledby="nav-glowworm-tab">
+				{% with enemy=chars['glowworm'] %}{% include "sub/one_enemy.html" %}{% endwith %}
+			</div>
+			<div class="tab-pane fade" role="tabpanel" id="nav-grip" 			 	aria-labelledby="nav-grip-tab">
+				{% with enemy=chars['grip'] %}{% include "sub/one_enemy.html" %}{% endwith %}
+			</div>
+			<div class="tab-pane fade" role="tabpanel" id="nav-bonethrower" 		aria-labelledby="nav-bonethrower-tab">
+				{% with enemy=chars['bonethrower'] %}{% include "sub/one_enemy.html" %}{% endwith %}
+			</div>
+			<div class="tab-pane fade" role="tabpanel" id="nav-pilgrim"		 	aria-labelledby="nav-pilgrim-tab">
+				{% with enemy=chars['pilgrim'] %}{% include "sub/one_enemy.html" %}{% endwith %}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

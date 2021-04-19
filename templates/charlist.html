@@ -1,20 +1,20 @@
 {% extends 'sub/base.html' %}
 
 {% block content %}
-<h1>{% block title %} Анкеты персонажей {% endblock %}</h1>
+<h1>{% block title %}Анкеты персонажей{% endblock %}</h1>
 
 <div class="container">
 	<div class="row">
 		{% for link, char in chars.items() %}
 			<div class="col-12 col-lg-6">
-				{%   if char.status == 'Игрок'%}{% set card = 'secondary'%}
-				{% elif char.status == 'NPC'	%}{% set card = 'success'  %}
-				{% elif char.status == 'Мертв'%}{% set card = 'primary'	 %}
+				{%   if char.status == 'Игрок'%}{% set card = 'primary'		%}
+				{% elif char.status == 'NPC'	%}{% set card = 'success'   %}
+				{% elif char.status == 'Мертв'%}{% set card = 'secondary' %}
 				{% endif%}
 				<div class="card text-white bg-{{ card }} mb-3" style="max-width: 30rem;">
 					<div class="row g-0">
 						<div class="col-5">
-							<img src="{{ url_for('static', filename='chars/avatars/'+link+'.jpg') }}" class="card-img-top" alt="...">
+							<img src="{{ char.avatar }}" class="card-img-top" alt="...">
 						</div>
 						<div class="col-7">
 							<div class="card-body">

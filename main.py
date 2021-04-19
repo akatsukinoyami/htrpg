@@ -8,9 +8,17 @@ app = Flask(__name__)
 def index():
     return routes.int_index()
 
+@app.route('/info')
+def info():
+    return routes.int_info()
+
 @app.route('/chars/')
 def char_list():
     return routes.int_char_list()
+
+@app.route('/enemies/')
+def enemy_list():
+    return routes.int_enemy_list()
 
 @app.route('/chars/<char>/')
 def user_profile(char):

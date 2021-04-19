@@ -2,6 +2,6 @@
 
 {% block content %}
 <tr class="table-active">
-	<td>{{ user.biography }}</td>
+	<td>{{ user.biography | safe }}</td>
 </tr>
 {% endblock %}

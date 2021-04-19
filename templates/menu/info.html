@@ -1,7 +1,8 @@
 <table class="table table-hover">
   <tbody>
 		{% set tclass = 'class="table-active"'%}
-		{% set row = 'scope="row"'%}
+    {% set row = 'scope="row"'%}
+    
     <tr {{tclass}}><th {{row}}>Имя													</th><td>{{user.username}}				</td></tr>
     <tr {{tclass}}><th {{row}}>Статус												</th><td>{{user.status}}  				</td></tr>
     <tr {{tclass}}><th {{row}}>Раса													</th><td>{{user.race}}						</td></tr>
@@ -18,3 +19,5 @@
     <tr {{tclass}}><th {{row}}>Кровавость										</th><td>{{user.guro}}						</td></tr>
 	</tbody>
 </table>
+
+

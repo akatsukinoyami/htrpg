@@ -31,7 +31,7 @@ def render_list(address, template):
 @decorator
 def int_index(_):			return render_table('index')
 @decorator
-def int_info(_):    	return render_table('info')
+def int_info(_): 			return render_list('info', 'info.html')
 @decorator
 def int_char_list(_):	return render_list('chars', 'charlist.html')
 @decorator

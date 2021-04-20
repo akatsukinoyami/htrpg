@@ -1,17 +1,17 @@
-{% extends 'menu/base.html' %}
+{% extends 'char/base.html' %}
 
 {% block content %}
 <thead>
 	<tr>
-		<th scope="col">Имя</th>
+		<th scope="col">Название</th>
 		<th scope="col">Описание</th>
 	</tr>
 </thead>
 <tbody>
-	{% for people in user.relatives %}
+	{% for perk in user.perks %}
 	<tr class="table-active">
-		<th scope="row">{{people.name}}</th>
-		<td>{{people.description}}</td>
+		<th scope="row">{{perk.name}}</th>
+		<td>{{perk.description}}</td>
 	</tr>
 	{% endfor %}
 </tbody>

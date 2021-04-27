@@ -1,11 +1,10 @@
 {% extends 'sub/base.html' %}
 
+{% block title  %}Анкета {{user.username}}{% endblock %}
+{% block title1 %}Анкета {{user.username}}{% endblock %}
+
 {% block content %}
 <div class="container">
-
-	<div class="row"><div class="col-12"><table class="table table-hover"><tr><td><h1>
-		{% block title %}Анкета {{user.username}}{% endblock %}
-	</h1></td></tr></table></div></div>
 
 	<div class="row">
 

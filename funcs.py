@@ -24,7 +24,8 @@ def open_json(file):
 		return json.load(fp)
 
 def render_table(name):
-	mytemplate = dict(template_name_or_list='sub/table.html', **open_json(f'static/json/{name}.json')) 
+	mydict = open_json(f'static/json/{name}.json')
+	mytemplate = dict(template_name_or_list='sub/table.html', **mydict) 
 
 	return mytemplate
 

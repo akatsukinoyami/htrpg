@@ -1,3 +1,7 @@
+{% set stats = dict(hp='HP',strength='Сила',stamina='Вынос.',accuracy='Точн.',durability='Прочн.',savvy='Смек.',knowledge='Знан.',will='Воля',charm='Шарм')%}
+{% set stat_names = ('hp','strength','stamina','accuracy','durability','savvy','knowledge','will','charm')%}
+
+
 <div class="card">
 	<div class="card-body">
 		<table class="table table-hover">
@@ -5,29 +9,22 @@
 				<tr>
 					<th>
 						<h4>
-							{{enemy.name}}
+							{{enemy.title}}
 						</h4>
 					</th>
 				</tr>
 			</tbody>
 		</table>
 		<table class="table table-hover">
-			<tbody>
-				<tr>
-					<th>HP  : {{enemy.hp}}				</th>
-					<th>Сила: {{enemy.strength}}	</th>
-					<th>Вын.: {{enemy.stamina}}		</th>
-					<th>Точ.: {{enemy.accuracy}}	</th>
-					<th>Про.: {{enemy.durability}}</th>
-				</tr>
-				<tr>
-					<th>Сме.: {{enemy.savvy}}			</th>
-					<th>Зна.: {{enemy.knowledge}}	</th>
-					<th>Воля: {{enemy.will}}			</th>
-					<th>Шарм: {{enemy.charm}}			</th>
-					<th></th>
-				</tr>
-			</tbody>
+			<tbody><tr><th>
+				<div class="container">
+					<div class="row">
+						{% for stat in stat_names %}
+						<div class="col-4 col-lg-2">{{ stats[stat] }}:</div>			<div class="col-1">{{enemy[stat]}}</div>
+						{% endfor %}
+					</div>
+				</div>
+			</th></tr></tbody>
 		</table>
 		
 		<table class="table table-hover">

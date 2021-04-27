@@ -1,0 +1,18 @@
+{% extends 'char/base.html' %}
+
+{% block content %}
+<thead>
+	<tr>
+		<th scope="col">Название</th>
+		<th scope="col">Описание</th>
+	</tr>
+</thead>
+<tbody>
+	{% for achievement in user.achievements %}
+	<tr class="table-active">
+		<th scope="row">{{achievement.name}}</th>
+		<td>{{achievement.description}}</td>
+	</tr>
+	{% endfor %}
+</tbody>
+{% endblock %}

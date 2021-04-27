@@ -1,0 +1,40 @@
+{% extends 'sub/base.html' %}
+
+
+{% block title  %}Анкеты персонажей{% endblock %}
+{% block title1 %}Анкеты персонажей{% endblock %}
+
+{% block content %}
+<div class="container">
+	<div class="row">
+		{% for char in chars %}
+			<div class="col-12 col-lg-6">
+				{%   if char.status == 'Игрок'%}{% set card = 'primary'		%}
+				{% elif char.status == 'NPC'	%}{% set card = 'success'   %}
+				{% elif char.status == 'Мертв'%}{% set card = 'secondary' %}
+				{% endif%}
+				<div class="card text-white bg-{{card}} mb-3" style="max-width: 30rem;">
+					<div class="row g-0">
+						<div class="col-5">
+							<img src="{{char.avatar}}" class="card-img-top" alt="...">
+						</div>
+						<div class="col-7">
+							<div class="card-body">
+								<h5 class="card-title">{{char.username}}</h5>
+								<p class="card-text">
+									{{char.status}}<br>
+									{{char.race}}	 <br>
+									{{char.age}}	 <br>
+									{{char.class}} <br>
+								</p>
+								<a href="{{ url_for('user_profile'		 , arg=char.link) }}" class="btn btn-primary">Анкета</a>
+								<a href="{{ url_for('user_profile_json', arg=char.link) }}" class="btn btn-primary btn-secondary">JSON</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}

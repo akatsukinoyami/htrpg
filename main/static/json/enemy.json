@@ -1,0 +1,20 @@
+{
+	"title"				: "",
+	"attack"			: [
+		{
+			"name"	: "",
+			"dice"	: "",
+			"damage": ""
+		}
+	],
+	"hp"					: "",
+	"strength"		: "",
+	"stamina"			: "",
+	"accuracy"		: "",
+	"durability"	: "",
+	"savvy"				: "",
+	"knowledge"		: "",
+	"will"				: "",
+	"charm"				: "",
+	"description"	: ""
+}

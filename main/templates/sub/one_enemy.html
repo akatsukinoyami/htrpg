@@ -1,0 +1,57 @@
+{% set stats = dict(hp='HP',strength='Сила',stamina='Вынос.',accuracy='Точн.',durability='Прочн.',savvy='Смек.',knowledge='Знан.',will='Воля',charm='Шарм')%}
+{% set stat_names = ('hp','strength','stamina','accuracy','durability','savvy','knowledge','will','charm')%}
+
+
+<div class="card">
+	<div class="card-body">
+		<table class="table table-hover">
+			<tbody>
+				<tr>
+					<th>
+						<h4>
+							{{enemy.title}}
+						</h4>
+					</th>
+				</tr>
+			</tbody>
+		</table>
+		<table class="table table-hover">
+			<tbody><tr><th>
+				<div class="container">
+					<div class="row">
+						{% for stat in stat_names %}
+						<div class="col-4 col-lg-2">{{ stats[stat] }}:</div>			<div class="col-1">{{enemy[stat]}}</div>
+						{% endfor %}
+					</div>
+				</div>
+			</th></tr></tbody>
+		</table>
+		
+		<table class="table table-hover">
+			<tbody>
+				<tr>
+					<th>Атака</th>
+					<th>Шанс</th>
+					<th>Урон</th>
+				</tr>
+				{% for attack in enemy.attack %}
+				<tr>
+					<td>{{attack.name}}</td>
+					<td>{{attack.dice}}</td>
+					<td>{{attack.damage}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		
+		<table class="table table-hover">
+			<tbody>
+				<tr>
+					<td>
+						{{enemy.description | safe }}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

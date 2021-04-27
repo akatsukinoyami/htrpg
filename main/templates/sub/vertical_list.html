@@ -1,0 +1,23 @@
+{% extends 'sub/base.html' %}
+
+{% block content %}
+<div class="row">
+  <div class="col-3">
+		<nav>
+			<div class="nav flex-column" id="nav-tab" role="tablist" aria-orientation="vertical">
+				{% for content in chars %}
+				<button data-bs-target="#nav-{{content.link}}" id="nav-{{content.link}}-tab" aria-controls="nav-{{content.link}}" class="btn btn-outline-primary btn-lg nav-link" data-bs-toggle="tab" role="tab">
+					{{content.title}}
+				</button>
+				{% endfor %}
+			</div>
+		</nav>
+  </div>
+<br>
+	<div class="col-9">
+		<div class="tab-content" id="nav-tabContent">
+			{% block list %}{% endblock list %}
+		</div>
+	</div>
+</div>
+{% endblock %}

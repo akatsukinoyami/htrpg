@@ -5,14 +5,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="shortcut icon" href="https://cdn.discordapp.com/attachments/833741008734519316/833801465864650752/icon.png" type="image/png">
+    <link rel="shortcut icon" href="{{discord}}833801465864650752/icon.png" type="image/png">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.discordapp.com/attachments/833741008734519316/833742349032226928/bootstrap.css" >
+    <link rel="stylesheet" href="https://bootswatch.com/4/slate/bootstrap.min.css" >
     
     <title>
       {% block title %}{% endblock title %}
     </title>
+
   </head>
   <body>
     {% include 'sub/navbar.html'	%}
@@ -29,6 +30,17 @@
       </table>
       
       
+    {% with messages = get_flashed_messages() %}
+		{% if messages %}
+			{% for message in messages %}
+				<div class="alert alert-danger alert-dismissible fade show" role="alert">
+					<strong>{{message}}</strong>
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+			{% endfor %}
+		{% endif %}
+	{% endwith %}
+
         {% block content %} 
         {% endblock content%}
     </div>

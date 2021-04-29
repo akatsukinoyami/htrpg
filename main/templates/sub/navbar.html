@@ -8,20 +8,31 @@
 
   <div class="navbar-collapse collapse show" id="navbarColor02">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url_for('index')}}">Домой
-          <span class="sr-only">(current)</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url_for('info')}}">Информация</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url_for('char_list')}}">Персонажи</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ url_for('enemy_list')}}">Враги</a>
-      </li>
+      <li class="nav-item"><a class="nav-link" href="{{ url_for('index')}}"			>Домой</a></li>
+      <li class="nav-item"><a class="nav-link" href="{{ url_for('list_info')}}"     >Информация</a></li>
+      <li class="nav-item"><a class="nav-link" href="{{ url_for('list_chars')}}"    >Персонажи</a></li>
+      <li class="nav-item"><a class="nav-link" href="{{ url_for('list_enemies')}}"  >Враги</a></li>
+	  <li class="nav-item"><a class="nav-link" href="{{ url_for('about')}}"			>О сайте</a></li>
+	  
+	  <div class="nav-item dropdown">
+		<button class="nav-link btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+
+		{% if current_user.is_authenticated %}
+		{{ current_user.username }}</button>
+		<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+			  <a class="nav-link" href="{{ url_for('logout')}}">Выход</a>
+
+		{% else %}
+		Авторизация</button>
+		<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+			<a class="nav-link" href="{{ url_for('login')}}">Логин</a>
+			<div class="dropdown-divider"></div>
+			<a class="nav-link" href="{{ url_for('register')}}">Регистрация</a>
+		{% endif %}
+
+		</ul>
+	  </div>
+
     </ul>
   </div>
 </nav>

@@ -1,0 +1,39 @@
+{% extends 'sub/base.html' %}
+
+{% block title  %}Sign up{% endblock %}
+{% block title1 %}Sign up{% endblock %}
+
+{% block content %}
+<div class="container">
+	<form action="" method="POST">
+		<div class="row">
+			<div class="col-12 col-md-6">
+				<label for="username">Username</label>
+				<input class="form-control" type="text"		placeholder="Enter username" name="username" value="{{request.form.username}}">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12 col-md-6">
+				<label for="username">Email</label>
+				<input class="form-control" type="email"	placeholder="Enter email" name="email" value="{{request.form.email}}">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12 col-md-6">
+				<label for="username">Password</label>
+				<input class="form-control" type="password"	placeholder="Enter password" name="password" value="{{request.form.password}}">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<input class="btn btn-primary" type="submit" value="Submit"><br><br>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<h4>Already Have an Account? <a href ="{{url_for('login')}}">Login Here</a></h4>
+			</div>
+		</div>
+	</form>
+</div>
+{% endblock %}

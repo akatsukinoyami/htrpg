@@ -1,0 +1,29 @@
+{% extends 'sub/base.html' %}
+
+{% block title  %}Please login{% endblock %}
+{% block title1 %}Please login{% endblock %}
+
+{% block content %}
+<div class="container">
+	<form action="" method="POST">
+		<div class="row">
+			<div class="col-12 col-md-6">
+				<label for="username">Email</label>
+				<input class="form-control" type="email" 	placeholder="Enter email" name="email" value="{{request.form.email}}">
+			</div>
+			<div class="col-12 col-md-6">
+				<label for="password">Password</label>
+				<input class="form-control" type="password" placeholder="Enter password" name="password" value="{{request.form.password}}">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<input class="btn btn-primary" type="submit" value="Login">
+			</div>
+		</div>
+	</form>
+	{% if error %}
+		<p class="error"><strong>Error:</strong> {{ error }}
+	{% endif %}
+</div>
+{% endblock %}

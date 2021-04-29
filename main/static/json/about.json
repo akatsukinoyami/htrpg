@@ -1,0 +1,7 @@
+{
+	"title" : "About",
+	"text"	: [
+		"Сайт базируется на Flask, использует Gunicorn и применяет Bootstrap js+css c темой <a href='https://bootswatch.com/slate/#top'>Slate</a>.",
+		"Для обратной связи, пожалуйста, используйте телеграм @nyawoobot или akatsukinoyami@yahoo.com."
+	]
+}

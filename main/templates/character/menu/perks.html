@@ -1,4 +1,4 @@
-{% extends 'char/base.html' %}
+{% extends 'character/base.html' %}
 
 {% block content %}
 <thead>
@@ -8,10 +8,10 @@
 	</tr>
 </thead>
 <tbody>
-	{% for achievement in user.achievements %}
+	{% for perk in user.perks %}
 	<tr class="table-active">
-		<th scope="row">{{achievement.name}}</th>
-		<td>{{achievement.description}}</td>
+		<th scope="row">{{perk.name}}</th>
+		<td>{{perk.description}}</td>
 	</tr>
 	{% endfor %}
 </tbody>

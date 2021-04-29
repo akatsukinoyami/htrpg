@@ -1,17 +1,21 @@
-from flask  import Flask
+from flask          import Flask
 
-from main.routes import *
+from main.models    import UserModel, db, login
+from main.routes    import assign_routes
 
 app = Flask(__name__)
+app.secret_key = 'xyz'
+ 
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-routeslist = (
-    ('/',             'index',             index),
-    ('/info',         'info',              info),
-    ('/chars/',       'char_list',         char_list),
-    ('/enemies/',     'enemy_list',        enemy_list),
-    ('/chars/<arg>/', 'user_profile',      user_profile),
-    ('/json/<arg>/',  'user_profile_json', user_profile_json),
-)
+db.init_app(app)
 
-for i in routeslist:
-    app.add_url_rule(*i)
+login.init_app(app)
+login.login_view = 'login'
+
+assign_routes(app)
+
+@app.before_first_request
+def create_all():
+    db.create_all()

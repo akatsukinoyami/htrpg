@@ -16,10 +16,10 @@ def login(_):
         user = UserModel.query.filter_by(email = email).first()
         if user is not None and user.check_password(request.form['password']):
             login_user(user)
-            flash(f'Привет {current_user.username}')
+            flash(f'Привет, {current_user.username}!', 'dark')
             return redirect('/')
         
-        flash('Данные не верны или пользователь не зарегестрирован.')
+        flash('Данные не верны или пользователь не зарегестрирован.', 'danger')
      
     return render_template('auth/login.html')
 
@@ -34,12 +34,14 @@ def register(_):
         password = request.form['password']
  
         if UserModel.query.filter_by(email=email).first():
-            return ('Email already Present')
+            flash('Такая почта уже зарегестрирована.', 'danger')
              
         user = UserModel(email=email, username=username)
         user.set_password(password)
         db.session.add(user)
         db.session.commit()
+
+        flash('Пользователь зарегестрирован.', 'dark')
         return redirect('/login')
 
     return render_template('auth/register.html')

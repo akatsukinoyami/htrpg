@@ -1,27 +1,27 @@
-{% extends 'sub/base.html' %}
+{% extends 'base/base.html' %}
 
-{% block title  %}Sign up{% endblock %}
-{% block title1 %}Sign up{% endblock %}
+{% block title  %}Регистрация{% endblock %}
+{% block title1 %}Регистрация{% endblock %}
 
 {% block content %}
 <div class="container">
 	<form action="" method="POST">
 		<div class="row">
 			<div class="col-12 col-md-6">
-				<label for="username">Username</label>
-				<input class="form-control" type="text"		placeholder="Enter username" name="username" value="{{request.form.username}}">
+				<label for="username">Имя пользователя</label>
+				<input class="form-control" type="text"		placeholder="Введите имя пользователя" name="username" value="{{request.form.username}}">
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-12 col-md-6">
-				<label for="username">Email</label>
-				<input class="form-control" type="email"	placeholder="Enter email" name="email" value="{{request.form.email}}">
+				<label for="username">Почта</label>
+				<input class="form-control" type="email"	placeholder="Введите email" name="email" value="{{request.form.email}}">
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-12 col-md-6">
-				<label for="username">Password</label>
-				<input class="form-control" type="password"	placeholder="Enter password" name="password" value="{{request.form.password}}">
+				<label for="username">Пароль</label>
+				<input class="form-control" type="password"	placeholder="Введите пароль" name="password" value="{{request.form.password}}">
 			</div>
 		</div>
 		<div class="row">
@@ -31,7 +31,7 @@
 		</div>
 		<div class="row">
 			<div class="col-12">
-				<h4>Already Have an Account? <a href ="{{url_for('login')}}">Login Here</a></h4>
+				<h5>Уже зарегестрированы? <a href ="{{url_for('login')}}">Войдите в аккаунт</a></h5>
 			</div>
 		</div>
 	</form>

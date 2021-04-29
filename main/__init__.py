@@ -6,7 +6,7 @@ from main.routes    import assign_routes
 app = Flask(__name__)
 app.secret_key = 'xyz'
  
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////app/tmp/mydb.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)

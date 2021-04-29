@@ -22,9 +22,14 @@ def assign_routes(app):
 	)
 
 	for i in routeslist:
-		url = {'rule' : i[0], 'endpoint' : i[1], 'view_func' : i[2]}
+		url = {
+			'rule'		: i[0], 
+			'endpoint'	: i[1], 
+			'view_func'	: i[2]
+			}
 
-		if len(i) is 4: url['methods'] = i[3]
+		if len(i) == 4: 
+			url['methods'] = i[3]
 
 		app.add_url_rule(**url)
 	
